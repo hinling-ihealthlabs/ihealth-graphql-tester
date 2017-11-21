@@ -1,0 +1,61 @@
+{
+  "name": "ihealth-graphql-tester",
+  "version": "0.0.1",
+  "description": "ihealth specific graphql-tester lib",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "clean": "rm -rf lib",
+    "compile": "./node_modules/.bin/babel src/main -d lib/main",
+    "lint": "eslint src",
+    "prepublish": "npm run clean && npm run test",
+    "pretest-compile": "npm run compile",
+    "preunittest": "npm run test-compile",
+    "test": "npm run lint && npm run unittest",
+    "test-compile": "./node_modules/.bin/babel src/test -d lib/test",
+    "unittest": "mocha -G --recursive --require lib/test/setup --compilers js:babel-core/register lib/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hinling-ihealthlabs/ihealth-graphql-tester.git"
+  },
+  "keywords": [
+    "graphql"
+  ],
+  "author": "hyeung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hinling-ihealthlabs/ihealth-graphql-tester/issues"
+  },
+  "homepage": "https://github.com/hinling-ihealthlabs/ihealth-graphql-tester#readme",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.11.0",
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "freeport": "^1.0.5",
+    "graphql": "^0.11.7",
+    "hapi": "^16.6.2",
+    "hapi-graphql": "^1.0.1",
+    "mocha": "^4.0.1",
+    "request": "^2.83.0"
+  },
+  "eslintIgnore": [
+    "src/test/servers/schema.js",
+    "src/test/servers/express-server.test.js",
+    "src/test/invalid-hostname.test.js",
+    "src/test/servers/hapi-server.test.js",
+    "src/test/swapi/simple-swapi.tests.js"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
